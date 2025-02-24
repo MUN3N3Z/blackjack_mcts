@@ -1,0 +1,16 @@
+#### hw3.py
+- My simulator function `sim()` ran a total of 100,000 simulations of blackjack games by randomly sampling cards whose values added up to 
+all possible sums between 4 and 21. The function then returned the majority strategy returned by the Monte Carlo Tree Search algorithm over 
+the simulations and stored the results in a json file - `blackjack.json`
+
+- The function `mcts()` ran the Monte Carlo Tree Search algorithm on the blackjack game by randomly sampling the house's down card running simulations
+for the player and dealer's hands for 10 seconds. During each iteration, the algorithm uses UCB formula to find the best leaf node, which is then expanded and a random playout is 
+simulated from an arbitrary child node. The action associated with the child with the highest average value - reward/visit_count - is returned as the best policy.
+
+- The `hitme()` function determines the best policy for each possible player-dealer hand values by looking them up in - `blackjack.json`.
+
+- `play()` leverages the `hitme()` function to play a 100,000 games of blackjack against the dealer and records the winning percentage in `output.out`
+
+### Results
+- Set random.seed(19) to ensure reproducibility
+- Using my mcts results, I average *33.43%* win rate against the dealer over 100,000 games. 
